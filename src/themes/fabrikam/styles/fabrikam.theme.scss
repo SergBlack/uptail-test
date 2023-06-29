@@ -1,1 +1,12 @@
 @import "fabrikam-rtl.theme";
+
+@font-face {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../../../public/webfonts") format("truetype");
+}
+
+body {
+  font-family: Ubuntu, Arial, Tahoma, Trebuchet MS, Verdana, sans-serif;
+}
