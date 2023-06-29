@@ -64,12 +64,12 @@ const BuyboxView: React.FC<IBuyboxViewProps & IBuyboxExtentionProps<IBuyboxData>
                 {price}
                 {unitOfMeasure}
                 {props.bulkPurchaseLink}
-                {description}
-                {_renderTextBlock(props.slots.textBlocks)}
+                {_renderTextBlock([])}
                 {rating}
                 {configure && _renderConfigure(configure)}
                 {keyInPrice && _renderKeyInPrice(keyInPrice)}
                 {quantity && _renderQuantity(quantity, callbacks, props, state, resources, quantityLimitsMessages, max, telemetryContent)}
+                {description}
                 {inventoryLabel}
                 {_renderCartAndActions(addToCart, addToOrderTemplate, addToWishlist)}
                 {findInStore && _renderFindInStore(findInStore)}
