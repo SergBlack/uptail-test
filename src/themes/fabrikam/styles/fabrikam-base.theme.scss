@@ -1,0 +1,9 @@
+@import "00-settings/index";
+@import "01-tools/index";
+@import "02-generic/index";
+@import "03-components/index";
+@import "04-modules/index";
+
+// Always keep theme-assets import as last in this file, for font and icons to load correctly for fabrikam-base theme
+
+@import "00-settings/theme-assets";

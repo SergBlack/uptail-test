@@ -1,0 +1,54 @@
+@import "../common/00-settings/colors";
+@import "../common/00-settings/responsive-breakpoints";
+@import "../common/00-settings/icons";
+
+$bulk-purchase-shadow: 0 0.3px 0.9px rgba(0, 0, 0, 0.1), 0 1.6px 3.6px rgba(0, 0, 0, 0.13);
+$bulk-purchase-background-color: $msv-white;
+
+.ms-bulk-purchase {
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+    &__content {
+        background: $bulk-purchase-background-color;
+        box-shadow: $bulk-purchase-shadow;
+
+        &__collapse-button {
+            width: 100%;
+            height: 85px;
+            font-size: 24px;
+            line-height: 28px;
+            text-align: unset;
+            background: $bulk-purchase-background-color;
+            box-shadow: $bulk-purchase-shadow;
+            color: var(--msv-font-primary-color);
+
+            &::after {
+                margin: 0 8px;
+                float: right;
+            }
+
+            &[aria-expanded="true"] {
+                @include add-icon($msv-ChevronUp, after);
+            }
+
+            &[aria-expanded="false"] {
+                @include add-icon($msv-ChevronDown, after);
+            }
+        }
+
+        &__collapse {
+            @media screen and (min-width: $msv-breakpoint-m) {
+                padding: 32px 60px 0 60px;
+            }
+
+            &__main-content {
+                &__description {
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding-bottom: 20px;
+                }
+            }
+        }
+    }
+}

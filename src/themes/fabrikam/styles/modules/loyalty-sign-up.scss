@@ -1,0 +1,79 @@
+@import "../common/00-settings/colors";
+@import "../common/00-settings/font";
+@import "../common/02-generic/button";
+@import "../common/00-settings/icons";
+
+// info message bar
+$msv-loyalty-signup-info-padding: 20px;
+$msv-loyalty-signup-info-margin-bottom: 44px;
+
+:root {
+    --msv-loyalty-signup-font-size: var(--msv-body-font-size-s);
+    --msv-loyalty-signup-font-color: var(--msv-font-primary-color);
+
+    // heading
+    --msv-loyalty-signup-heading-font-size: var(--msv-body-font-size-xl);
+    --msv-loyalty-signup-heading-font-color: var(--msv-font-primary-color);
+
+    // link
+    --msv-loyalty-signup-link-color: #{$msv-link-color};
+    --msv-loyalty-signup-link-size: var(--msv-body-font-size-m);
+
+    // primary button
+    --msv-loyalty-signup-btn-bg: var(--msv-accent-brand-color);
+    --msv-loyalty-signup-btn-font-color: var(--msv-font-secondary-color);
+    --msv-loyalty-signup-btn-border: var(--msv-accent-brand-color);
+
+    // info message bar
+    --msv-loyalty-signup-info-message-bg: #{$msv-blue-light};
+    --msv-loyalty-signup-info-message-border: transparent;
+    --msv-loyalty-signup-info-message-color: #{$msv-blue};
+}
+
+.ms-loyalty-signup {
+    text-align: center;
+
+    &__info {
+        @include add-icon($msv-InfoCircle);
+        background-color: var(--msv-loyalty-signup-info-message-bg);
+        border: 1px solid var(--msv-loyalty-signup-info-message-border);
+        color: var(--msv-loyalty-signup-info-message-color);
+        padding: $msv-loyalty-signup-info-padding;
+        margin-bottom: $msv-loyalty-signup-info-margin-bottom;
+        border-radius: 3px;
+        text-align: left;
+    }
+
+    &__heading {
+        @include font-content(var(--msv-font-weight-bold),
+        var(--msv-loyalty-signup-heading-font-size), $msv-line-height-xl);
+        color: var(--msv-loyalty-signup-heading-font-color);
+        margin-bottom: 10px;
+    }
+
+    &__text {
+        @include font-content(var(--msv-font-weight-normal),
+        var(--msv-loyalty-signup-font-size), $msv-line-height-s);
+        color: var(--msv-loyalty-signup-font-color);
+        margin-bottom: 10px;
+    }
+
+    &__terms {
+        @include button-link(var(--msv-loyalty-signup-link-color));
+        @include font-content(var(--msv-font-weight-normal),
+        var(--msv-loyalty-signup-link-size), $msv-line-height-m);
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    &__btn {
+        @include primary-button(var(--msv-loyalty-signup-btn-bg),
+        var(--msv-loyalty-signup-btn-font-color), var(--msv-loyalty-signup-btn-border));
+        margin-bottom: 10px;
+    }
+
+    &__signin {
+        @include primary-button(var(--msv-loyalty-signup-btn-bg),
+        var(--msv-loyalty-signup-btn-font-color), var(--msv-loyalty-signup-btn-border));
+    }
+}

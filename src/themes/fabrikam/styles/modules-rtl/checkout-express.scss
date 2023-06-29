@@ -1,0 +1,28 @@
+
+@import "../common/00-settings/responsive-breakpoints";
+
+$msv-checkout-express-googlepay-mobile-margin-right: -24px;
+$msv-checkout-express-payment-container-padding-left: 400px;
+$msv-checkout-express-paypal-margin-left: 4px;
+
+[dir="rtl"] {
+    .container.msc-express-payment-container {
+        padding-right: 0;
+        padding-left: $msv-checkout-express-payment-container-padding-left;
+
+        @media screen and (max-width: $msv-breakpoint-m) {
+            padding-left: 0;
+        }
+    }
+
+    .ms-checkout-express-googlepay {
+        @media screen and (max-width: $msv-breakpoint-m) {
+            margin-right: $msv-checkout-express-googlepay-mobile-margin-right;
+            margin-left: 0;
+        }
+    }
+
+    .ms-checkout-express-paypal {
+        margin-left: $msv-checkout-express-paypal-margin-left;
+    }
+}

@@ -1,0 +1,18 @@
+@import "../00-settings/index";
+@import "../01-tools/index";
+@import "../02-generic/index";
+
+.msc-add-to-wishlist {
+    @include add-icon($msv-Heart, after, $msv-outline-icon-weight);
+    @include vfi();
+
+    &__removing {
+        @include add-icon($msv-HeartFill, after);
+    }
+
+    &:not(:disabled) {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

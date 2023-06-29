@@ -8,9 +8,14 @@
 import * as Msdyn365 from '@msdyn365-commerce/core';
 
 export interface IHelloworldConfig extends Msdyn365.IModuleConfig {
-    title?: string;
+    showText?: string;
+}
+
+export interface IHelloworldResources {
+    resourceKey: string;
 }
 
 export interface IHelloworldProps<T> extends Msdyn365.IModule<T> {
+    resources: IHelloworldResources;
     config: IHelloworldConfig;
 }

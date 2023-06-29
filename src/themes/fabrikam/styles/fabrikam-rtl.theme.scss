@@ -1,0 +1,6 @@
+@import "fabrikam-base.theme";
+@import "05-rtl/index";
+
+// Always keep theme-assets import as last import in the file, for font and icons to load correctly for fabrikam-base theme
+
+@import "00-settings/theme-assets";

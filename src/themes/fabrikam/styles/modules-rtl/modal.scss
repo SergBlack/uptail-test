@@ -1,0 +1,14 @@
+[dir="rtl"] {
+    .msc-modal {
+        &__header {
+            .msc-modal__title {
+                margin: 0 25px;
+            }
+
+            .msc-modal__close-button {
+                right: unset;
+                left: 20px;
+            }
+        }
+    }
+}

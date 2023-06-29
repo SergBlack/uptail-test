@@ -1,0 +1,84 @@
+@import "../common/00-settings/colors";
+
+$product-dimensions-matrix-separator-color: $msv-gray-600;
+
+[dir="rtl"] {
+    .msc-product-dimensions-matrix {
+        &__header {
+            &__actions {
+                &__enter-all-quantities-container {
+                    &__toggle-button {
+                        &::before {
+                            padding-right: unset;
+                            padding-left: 10px;
+                        }
+
+                        &::after {
+                            float: left;
+                            padding-left: unset;
+                            padding-right: 6px;
+                        }
+                    }
+                }
+
+                &__clear-all-quantities-container {
+                    &__button {
+                        &::before {
+                            padding-right: unset;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__matrix {
+            &__dimensions-header {
+                &__cell {
+                    &__toggle-button {
+                        text-align: right;
+                        float: right;
+
+                        &::after {
+                            float: left;
+                            padding-left: unset;
+                            padding-right: 10px;
+                        }
+                    }
+                }
+            }
+
+            &__row {
+                &__cell {
+                    &__dimension-item {
+                        .msc-swatch-container {
+                            padding-right: unset;
+                            padding-left: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__footer {
+            &__total-summary {
+                border-right: unset;
+                border-left: 0.5px solid $product-dimensions-matrix-separator-color;
+            }
+
+            &__actions {
+                margin-left: 10px;
+                margin-right: auto;
+
+                &__add-to-order-template {
+                    &__add-button {
+                        &::before {
+                            padding-right: unset;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

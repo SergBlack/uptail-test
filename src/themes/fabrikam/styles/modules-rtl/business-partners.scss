@@ -1,0 +1,15 @@
+@import "../common/00-settings/icons";
+
+[dir="rtl"] {
+    .ms-business-partners {
+        &__back-link {
+            @include add-icon($msv-ChevronRight, before);
+        }
+
+        &__table-list {
+            &__header {
+                text-align: right;
+            }
+        }
+    }
+}

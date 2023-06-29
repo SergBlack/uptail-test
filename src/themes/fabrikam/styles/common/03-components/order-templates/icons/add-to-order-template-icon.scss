@@ -1,0 +1,18 @@
+@import "../../../00-settings/index";
+@import "../../../01-tools/index";
+@import "../../../02-generic/index";
+
+.msc-add-to-order-template-icon {
+    @include add-icon($msv-file, after, $msv-outline-icon-weight);
+    @include vfi();
+
+    &__added {
+        @include add-icon($msv-file, after);
+    }
+
+    &:not(:disabled) {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

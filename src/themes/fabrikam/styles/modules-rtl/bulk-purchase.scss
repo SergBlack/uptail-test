@@ -1,0 +1,11 @@
+[dir="rtl"] {
+    .ms-bulk-purchase {
+        &__content {
+            &__collapse-button {
+                &::after {
+                    float: left;
+                }
+            }
+        }
+    }
+}

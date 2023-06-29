@@ -1,0 +1,38 @@
+@import "../common/00-settings/responsive-breakpoints";
+
+$rtl-site-picker-button-padding-right: 20px;
+$rtl-site-picker-button-padding-left: 10px;
+$rtl-site-picker-list-item-img-margin-left: 10px;
+
+[dir="rtl"] {
+    .ms-site-picker__list__item {
+        .msc_image {
+            margin-right: 0;
+            margin-left: $rtl-site-picker-list-item-img-margin-left;
+        }
+    }
+
+    @media (max-width: $msv-breakpoint-l) {
+        .ms-site-picker__drawer {
+            .drawer__button {
+                padding-left: $rtl-site-picker-button-padding-left;
+                padding-right: $rtl-site-picker-button-padding-right;
+
+                .drawer__buttontext {
+                    float: right;
+                }
+
+                .ms-site-picker__drawer-close,
+                .ms-site-picker__drawer-open {
+                    left: $rtl-site-picker-button-padding-left;
+                    right: unset;
+                }
+            }
+
+            .msc_image {
+                margin-right: 0;
+                margin-left: $rtl-site-picker-list-item-img-margin-left;
+            }
+        }
+    }
+}

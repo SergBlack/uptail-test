@@ -1,0 +1,97 @@
+@import "../common/00-settings/colors";
+@import "../common/00-settings/font";
+@import "../common/00-settings/icons";
+@import "../common/00-settings/responsive-breakpoints";
+@import "../common/01-tools/mixins";
+
+$msc-account-welcome-title-margin-bottom: 40px;
+$msc-account-welcome-title-margin-top:32px;
+$msc-account-welcome-title-border-bottom-color: $msv-gray-500;
+$msc-account-welcome-title-border-bottom-style: solid;
+$msc-account-welcome-title-border-bottom-thickness: 1px;
+$msc-account-welcome-title-links-padding-top: 12px;
+$msc-account-tile-heading-icon-padding: 5px;
+$msc-generic-tile-heading-margin-bottom: 0.5rem;
+$msc-link-padding-right: 12px;
+
+// style presets
+:root {
+    --msv-account-landing-title-font-color: var(--msv-font-primary-color);
+
+    // title
+    --msv-account-landing-title-font-size: var(--msv-body-font-size-xl);
+    --msv-account-landing-title-desktop-font-size: var(--msv-body-font-size-xxl);
+
+    // tiles
+    --msv-account-landing-tile-heading-size: var(--msv-body-font-size-l);
+    --msv-account-landing-tile-heading-color: var(--msv-font-primary-color);
+    --msv-account-landing-tile-text-size: var(--msv-body-font-size-m);
+    --msv-account-landing-tile-text-color: var(--msv-font-primary-color);
+
+    // link
+    --msv-account-landing-link-color: #{$msv-link-color};
+    --msv-account-landing-link-size: var(--msv-body-font-size-m);
+}
+
+.ms-account {
+    &-wishlist-tile {
+        @include add-icon($msv-HeartFill, before);
+
+        &::before {
+            padding-right: $msc-account-tile-heading-icon-padding;
+        }
+    }
+
+    &-wishlist-tile,
+    &-generic-tile,
+    &-order-templates-tile,
+    &-address-tile,
+    &-loyalty-tile,
+    &-organization-users-tile,
+    &-customer-balance-tile,
+    &-invoice-tile {
+
+        margin-bottom: $msc-account-welcome-title-margin-bottom;
+
+        &__heading {
+            @include font-content(var(--msv-font-weight-bold), var(--msv-account-landing-tile-heading-size),
+            $msv-line-height-l);
+            color: var(--msv-account-landing-tile-heading-color);
+            margin-bottom: $msc-generic-tile-heading-margin-bottom;
+        }
+
+        &__links {
+            @include font-content-underline(var(--msv-font-weight-normal), var(--msv-account-landing-link-size),
+            $msv-line-height-m);
+            padding-top: $msc-account-welcome-title-links-padding-top;
+        }
+
+        &__link {
+            @include vfi();
+            color: var(--msv-account-landing-link-color);
+            padding-right: $msc-link-padding-right;
+        }
+
+        &__link-button {
+            @include vfi();
+            color: var(--msv-account-landing-link-color);
+            cursor: pointer;
+        }
+
+        &__description {
+            @include font-content(var(--msv-font-weight-normal), var(--msv-account-landing-tile-text-size),
+            $msv-line-height-m);
+            color: var(--msv-account-landing-tile-text-color);
+        }
+
+        &__value {
+            @include font-content(var(--msv-font-weight-bold), var(--msv-account-landing-tile-text-size),
+            $msv-line-height-m);
+            color: var(--msv-account-landing-tile-text-color);
+
+            &::before, &::after {
+                content: " ";
+            }
+        }
+    }
+}

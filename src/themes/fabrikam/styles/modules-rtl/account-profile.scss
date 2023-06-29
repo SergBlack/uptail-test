@@ -1,0 +1,15 @@
+$msv-account-profile-section-margin-right : 100px;
+
+[dir="rtl"] {
+    .ms-account-profile {
+        &-wrapper {
+            margin-right: 0;
+            float: right;
+            margin-left: $msv-account-profile-section-margin-right;
+        }
+
+        &__attributes-wrapper {
+            float: right;
+        }
+    }
+}

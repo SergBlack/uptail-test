@@ -1,0 +1,6 @@
+{
+	"$type": "themeModule",
+	"friendlyName": "Fabrikam (COPY)",
+	"name": "fabrikam",
+	"description": "This is fabrikam-theme theme."
+}
