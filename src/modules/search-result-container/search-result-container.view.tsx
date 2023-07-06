@@ -4,16 +4,17 @@
  */
 
 /* eslint-disable no-duplicate-imports */
+import { Module, Node } from '@msdyn365-commerce-modules/utilities';
+import * as React from 'react';
+
+import { ISearchResultModalViewProps } from './components';
 import {
     ICategoryHierarchyViewProps,
     IRefineMenuViewProps,
     ISearchResultContainerViewProps,
-    ISearchResultModalViewProps,
     ISortByViewProps,
     ITitleViewProps
-} from '@msdyn365-commerce-modules/search-result-container';
-import { Module, Node } from '@msdyn365-commerce-modules/utilities';
-import * as React from 'react';
+} from './search-result-container';
 
 const SearchResultContainerView: React.FC<ISearchResultContainerViewProps> = props => {
     const {
@@ -40,7 +41,7 @@ const SearchResultContainerView: React.FC<ISearchResultContainerViewProps> = pro
     if (isMobile) {
         return (
             <Module {...SearchResultContainer}>
-                {categoryHierarchy && renderCategoryHierarchy(categoryHierarchy)}
+                {renderCategoryHierarchy(categoryHierarchy)}
                 {renderTitle(TitleViewProps)}
                 {choiceSummary}
                 {modalToggle}
@@ -56,18 +57,17 @@ const SearchResultContainerView: React.FC<ISearchResultContainerViewProps> = pro
     }
     return (
         <Module {...SearchResultContainer}>
-            {categoryHierarchy && <Node {...CategoryNavContainer}>{renderCategoryHierarchy(categoryHierarchy)}</Node>}
+            <Node {...CategoryNavContainer}>
+                {categoryHierarchy && renderCategoryHierarchy(categoryHierarchy)}
+                {TitleViewProps && renderTitleCount(TitleViewProps)}
+            </Node>
             <Node {...RefineAndProductSectionContainer}>
                 {refineMenu && renderRefiner(refineMenu)}
                 <Node {...ProductSectionContainer}>
+                    {TitleViewProps && renderTitle(TitleViewProps)}
+                    {choiceSummary}
+                    {sortByOptions && !isRecoSearchPage && renderSort(sortByOptions)}
                     <Node {...FeatureSearchContainer}>{similarLookProduct}</Node>
-                    <div className='ms-search-result-wrapper-title-choice-summary'>
-                        {TitleViewProps && renderTitle(TitleViewProps)}
-                        {choiceSummary}
-                    </div>
-                    <div className='ms-search-result-wrapper-sort-by-category'>
-                        {sortByOptions && !isRecoSearchPage && renderSort(sortByOptions)}
-                    </div>
                     <Node {...ProductsContainer}>
                         {errorMessage}
                         {products}
@@ -155,8 +155,20 @@ const renderTitle = (props: ITitleViewProps): JSX.Element | null => {
             <Node {...TitleContainer}>
                 <h2>
                     {title.titlePrefix}
-                    {title.titleText}({title.titleCount})
+                    {title.titleText}
                 </h2>
+            </Node>
+        );
+    }
+    return null;
+};
+
+const renderTitleCount = (props: ITitleViewProps): JSX.Element | null => {
+    const { title, TitleContainer } = props;
+    if (title) {
+        return (
+            <Node {...TitleContainer}>
+                <h5>{title.titleCount}</h5>
             </Node>
         );
     }
