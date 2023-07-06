@@ -52,7 +52,7 @@ $msv-product-card-swatch-item-size: 30px;
     font-weight: normal;
     font-size: var(--msv-body-font-size-m);
     line-height: $product-title-line-height;
-    margin: $product-title-margin-top 5px $product-title-margin-bottom 5px;
+    margin: $product-title-margin-top 0 $product-title-margin-bottom 0;
     overflow: hidden;
     text-overflow: ellipsis;
     text-transform: none;
@@ -70,7 +70,11 @@ $msv-product-card-swatch-item-size: 30px;
 }
 
 .msc-product__details {
-    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 334px;
 }
 
 .msc-product {
