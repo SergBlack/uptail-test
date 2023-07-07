@@ -98,8 +98,7 @@ $msv-solid-icon-weight: 900;
     font-style: normal;
     font-weight: $msv-outline-icon-weight;
     font-display: swap;
-    src: url("#{$msv-font-path}/fa-regular-400.woff2") format("woff2"),
-        url("#{$msv-font-path}/fa-regular-400.woff") format("woff");
+    src: url("#{$msv-font-path}/public/webfonts") format("truetype");
 }
 
 @font-face {
@@ -107,8 +106,7 @@ $msv-solid-icon-weight: 900;
     font-style: normal;
     font-weight: $msv-solid-icon-weight;
     font-display: swap;
-    src: url("#{$msv-font-path}/fa-solid-900.woff2") format("woff2"),
-        url("#{$msv-font-path}/fa-solid-900.woff") format("woff");
+    src: url("#{$msv-font-path}/public/webfonts") format("truetype");
 }
 
 @mixin msv-icon($icon-weight: $msv-solid-icon-weight) {
