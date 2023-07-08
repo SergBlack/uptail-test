@@ -181,7 +181,7 @@
 		},
 		"addressPhoneLabel": {
 			"comment": "Label for the phone field",
-			"value": "Phone"
+			"value": "Phone *"
 		},
 		"addressPhoneRequiredErrorMessage": {
 			"comment": "Error message to display when phone is not provided",
@@ -189,7 +189,7 @@
 		},
 		"addressPhoneFormatErrorMessage": {
 			"comment": "Error message to display when phone format is wrong",
-			"value": "Only numeric characters, spaces, +, - and x are valid entries"
+			"value": "Your number must start with 444 or 555. Only numeric characters without spaces"
 		},
 		"addressZipCodeLabel": {
 			"comment": "Label for the zipcode field",

@@ -51,6 +51,9 @@ import { CheckoutModule, ErrorLocation } from '@msdyn365-commerce/global-state';
 import { ErrorComponent } from '@msdyn365-commerce-modules/address';
 import { focusOnCheckoutError } from '@msdyn365-commerce-modules/address';
 
+import { validateAddressFormat } from './validation/validateAddress';
+import { DEFAULT_REQUIRED_FIELDS } from './validation/constants';
+
 /**
  * The checkout address props interface.
  */
@@ -186,7 +189,7 @@ class CheckoutShippingAddress extends React.Component<ICheckoutAddressProps, ICh
         this.addressCommon = new AddressCommon(context, resources, telemetry);
         this.addressFormat = new AddressFormat(
             this.countryRegions,
-            new AddressMetaData({ ...resources }, this._getAddressFormatExcludeList()),
+            new AddressMetaData({ ...resources }, this._getAddressFormatExcludeList(), DEFAULT_REQUIRED_FIELDS),
             this.addressPurposes
         );
         this.validationError = {};
@@ -214,12 +217,8 @@ class CheckoutShippingAddress extends React.Component<ICheckoutAddressProps, ICh
 
         // Initializing data props
         this._dataInitialize(this.props);
-
-        this.addressFormat = new AddressFormat(
-            this.countryRegions,
-            new AddressMetaData({ ...resources }, this._getAddressFormatExcludeList()),
-            this.addressPurposes
-        );
+        const addressMetaData = new AddressMetaData({ ...resources }, this._getAddressFormatExcludeList(), DEFAULT_REQUIRED_FIELDS);
+        this.addressFormat = new AddressFormat(this.countryRegions, addressMetaData, this.addressPurposes);
 
         this.props.data.checkout.then(() => {
             this._setDefaultCountryRegionId();
@@ -352,7 +351,6 @@ class CheckoutShippingAddress extends React.Component<ICheckoutAddressProps, ICh
     }
 
     public render(): JSX.Element | null {
-        console.log(this.props.moduleState);
         if (!this._canShip()) {
             return null;
         }
@@ -487,6 +485,7 @@ class CheckoutShippingAddress extends React.Component<ICheckoutAddressProps, ICh
      * @param result - Suggestion result interface.
      */
     @action
+    // @ts-ignore
     private readonly _onSuggestionSelected = async (result: Microsoft.Maps.ISuggestionResult): Promise<void> => {
         this._clearAddressFields();
         const address = this.addressFormat.getTranformedAddress(result, this.stateProvinceInfo);
@@ -797,7 +796,10 @@ class CheckoutShippingAddress extends React.Component<ICheckoutAddressProps, ICh
      */
     private readonly onAddressAddUpdate = (name: string, value: string | boolean) => {
         set(this.addUpdateAddress, { [name]: value });
-        this.addressFormat.validateAddressFormat(this.addUpdateAddress, this.validationError, this.countryRegionId, name);
+
+        const addressFormat = this.addressFormat.getAddressFormat(this.addUpdateAddress.ThreeLetterISORegionName || this.countryRegionId);
+
+        validateAddressFormat(this.addUpdateAddress, addressFormat, this.validationError, name);
     };
 
     /**
