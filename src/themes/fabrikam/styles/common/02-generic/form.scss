@@ -1,4 +1,4 @@
-// Form elements
+@import "../00-settings/font";
 
 @mixin error-message() {
     @include font-content-m(var(--msv-font-weight-bold));
@@ -14,7 +14,7 @@
     border: 1px solid #6B727A;
     border-radius: 0;
 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: $msv-primary-font-family;
     font-weight: normal;
     font-size: 18px;
     line-height: 24px;
