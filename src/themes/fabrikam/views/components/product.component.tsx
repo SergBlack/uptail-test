@@ -40,7 +40,15 @@ import {
 } from '@msdyn365-commerce-modules/utilities';
 import React, { useState } from 'react';
 
-import { IPriceComponentResources, PriceComponent, ISwatchItem, RatingComponent, ProductComponentSwatchComponent } from '@msdyn365-commerce/components';
+import {
+    IPriceComponentResources,
+    PriceComponent,
+    ISwatchItem,
+    RatingComponent,
+    ProductComponentSwatchComponent
+} from '@msdyn365-commerce/components';
+
+import { AddToCartButton } from "./AddToCartButton";
 
 export interface IProductComponentProps extends IComponentProps<{ product?: ProductSearchResult }> {
     className?: string;
@@ -589,28 +597,31 @@ const ProductCard: React.FC<IProductComponentProps> = ({
                         context.actionContext.requestContext
                     )}
                 </div>
-                <h4 className='msc-product__title'>{product.Name}</h4>
             </a>
             {renderProductDimensions()}
             <div className='msc-product__details'>
-                {renderPrice(
-                    context,
-                    typeName,
-                    id,
-                    product.BasePrice,
-                    product.Price,
-                    product.MaxVariantPrice,
-                    product.MinVariantPrice,
-                    savingsText,
-                    freePriceText,
-                    originalPriceText,
-                    currentPriceText
-                )}
-                {isUnitOfMeasureEnabled && renderProductUnitOfMeasure(product.DefaultUnitOfMeasure)}
-                {renderDescription(product.Description)}
-                {!context.app.config.hideRating &&
-                    renderRating(context, typeName, id, product.AverageRating, product.TotalRatings, ratingAriaLabel)}
-                {renderProductAvailability(inventoryLabel)}
+                <div>
+                    <h4 className='msc-product__title'>{product.Name}</h4>
+                    {renderPrice(
+                        context,
+                        typeName,
+                        id,
+                        product.BasePrice,
+                        product.Price,
+                        product.MaxVariantPrice,
+                        product.MinVariantPrice,
+                        savingsText,
+                        freePriceText,
+                        originalPriceText,
+                        currentPriceText
+                    )}
+                    {isUnitOfMeasureEnabled && renderProductUnitOfMeasure(product.DefaultUnitOfMeasure)}
+                    {renderDescription(product.Description)}
+                    {!context.app.config.hideRating &&
+                        renderRating(context, typeName, id, product.AverageRating, product.TotalRatings, ratingAriaLabel)}
+                    {renderProductAvailability(inventoryLabel)}
+                </div>
+                <AddToCartButton context={context} product={product} productPageUrl={productPageUrl} />
             </div>
             {quickViewButton && renderQuickView(quickViewButton, product.RecordId)}
             {productComparisonButton && renderProductComparisonButton(productComparisonButton, product, getCatalogId(context.request))}
