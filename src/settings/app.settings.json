@@ -1,0 +1,9 @@
+{
+    "config":{
+        "productCardAddButton":{
+            "type": "boolean",
+            "friendlyName": "Add to cart button",
+            "description": "Show/hide 'Add to cart button' on the product card"
+        }
+    }
+}
